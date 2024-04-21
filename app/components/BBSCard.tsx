@@ -9,25 +9,25 @@ import {
 } from "@/components/ui/card";
 // import { Link } from "lucide-react";
 import Link from "next/link";
+import { BBSData } from "../types/types";
 
-const BBSCard = () => {
+interface BBSDataProps {
+  bbsData: BBSData;
+}
+
+const BBSCard = ({ bbsData }: BBSDataProps) => {
+  const { id, title, content, createdAt, username } = bbsData;
+
   return (
     <div>
       <Card>
         <CardHeader>
-          <CardTitle>Create project</CardTitle>
-          <CardDescription>
-            Deploy your new project in one-click.
-          </CardDescription>
+          <CardTitle>{title}</CardTitle>
+          <CardDescription>{username}</CardDescription>
         </CardHeader>
-        <CardContent>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus
-          quis ex distinctio quos natus numquam, quasi cumque temporibus
-          accusantium esse. Neque necessitatibus iusto ipsam accusantium quas
-          itaque aspernatur, in laudantium.
-        </CardContent>
+        <CardContent>{content}</CardContent>
         <CardFooter className="flex justify-between">
-          <Link href={"/bbs-posts/1"} className="text-blue-500">
+          <Link href={`/bbs-posts/${id}`} className="text-blue-500">
             Read More
           </Link>
         </CardFooter>
